@@ -8,7 +8,7 @@
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
     <p>List of Students%></p>
-    <p><%= studentsArray[0].name + " - " + studentsArray[0].name %></p>
+    <p><%= //studentsArray[0].name + " - " + studentsArray[0].name %></p>
     <p><%= 1 + 2 %></p>
     <p><% 
         // scriptlet
@@ -16,21 +16,24 @@
         let b = 40
         let c = "Hello" 
         let myObject = { name: "AAAA", desc: "sdfsfsdf", quantity: 1000} 
-        let myObj2 = studentsArray[1]
+        //let myObj2 = studentsArray[1]
         %>
         <%= a + b %>
         <%= myObject.name %>
-        <%= myObj2.name %>
-
-        <% for(let i = 0; i < studentsArray.length; i++) { %>
-              <p><%= studentsArray[i].student_first %> <%= studentsArray[i].student_last %> <%= studentsArray[i].hobby %></p>
+        <%= //myObj2.name %>
+        <% if(studentsArray != undefined)  { %>
+          <% for(let i = 0; i < studentsArray.length; i++) { %>
+                <p><%= studentsArray[i].student_first %> <%= studentsArray[i].student_last %> <%= studentsArray[i].hobby %></p>
+          <% } %>
         <% } %>
     </p>
     <ol>
-      <% for(let i = 0; i < studentsArray.length; i++) { %>
-        <li><%= studentsArray[i].student_first %> <%= studentsArray[i].student_last %> <%= studentsArray[i].hobby %></li>
-  <% } %>
+      <% if(studentsArray != undefined)  { %>
+        <% for(let i = 0; i < studentsArray.length; i++) { %>
+          <li><%= studentsArray[i].student_first %> <%= studentsArray[i].student_last %> <%= studentsArray[i].hobby %></li>
+        <% } %>
+      <% } %>  
     </ol>
-    <% //res.write("AAAAA") %>
+
   </body>
 </html>
