@@ -12,7 +12,7 @@
     
     <ol>
       <% if(studentsArray != undefined)  { %>
-        <p><%= studentsArray.data[0].student_first + " - " + studentsArray.data[0].student_last %></p>
+        <p><%= //studentsArray.data[0].student_first + " - " + studentsArray.data[0].student_last %></p>
         <% for(let i = 0; i < studentsArray.data.length; i++) { %>
           <li><%= studentsArray.data[i].student_first %> <%= studentsArray.data[i].student_last %> <%= studentsArray.data[i].hobby %></li>
         <% } %>

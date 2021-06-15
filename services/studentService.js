@@ -6,11 +6,12 @@ var dbhost_ra1 = {
     password: "cb12ptjs",
     database: "cb12ptjs"
 };
-var sql = "SELECT * FROM `cb12ptjs`.`students`;";
 
-var con = db.createConnection(dbhost_ra1);
-async function f() {
 
+
+async function getAllStudents() {
+    var sql = "SELECT * FROM `cb12ptjs`.`students`;";
+    var con = db.createConnection(dbhost_ra1);
     let promise = new Promise((resolve, reject) => {
         con.connect(function (err) {
             let data;
@@ -37,10 +38,7 @@ async function f() {
     return(result)
 }
 
-// f().then((result) => {
-//     //    console.log(result)
-//         data = result
-        
-//     }
-// )
-module.exports = { f }
+
+// insertStudent(student) student = new Student()
+
+module.exports = { getAllStudents }
