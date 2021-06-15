@@ -10,7 +10,7 @@ var sql = "SELECT * FROM `cb12ptjs`.`students`;";
 
 var con = db.createConnection(dbhost_ra1);
 
-function myDBAccess() {
+async function myDBAccess() {
     let finalresult;
     var obj1;
     obj1 = con.connect(function (err) {
@@ -21,14 +21,13 @@ function myDBAccess() {
             console.log("Yeap, this is MySQL Server talking! At your Services!");
             con.query(sql, function(ee, result, fields) {
                 if(err) throw err;
-                // console.log(result)
-                data = Object.assign({}, result);
-                finalresult = Object.assign({}, data)
+                finalresult = Object.assign({}, result)
                 console.log(`From inside:`)
-                console.log(new Array(finalresult))
+                console.log(finalresult)
             });
             
             con.end(function(err) {
+                console.log(finalresult)
                 console.log("Disconnected from MySQL server");
             });
             return(data);
@@ -41,5 +40,5 @@ function myDBAccess() {
 
 let data = myDBAccess()
 console.log("From outside: ")
-console.log(data)
+myDBAccess().then(console.log)
 module.exports = { data }
