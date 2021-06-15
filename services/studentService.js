@@ -9,36 +9,38 @@ var dbhost_ra1 = {
 var sql = "SELECT * FROM `cb12ptjs`.`students`;";
 
 var con = db.createConnection(dbhost_ra1);
+async function f() {
 
-async function myDBAccess() {
-    let finalresult;
-    var obj1;
-    obj1 = con.connect(function (err) {
-        let data;
-        if(err) {
-            console.log("Error Connecting");
-        } else {
-            console.log("Yeap, this is MySQL Server talking! At your Services!");
-            con.query(sql, function(ee, result, fields) {
-                if(err) throw err;
-                finalresult = Object.assign({}, result)
-                console.log(`From inside:`)
-                console.log(finalresult)
-            });
-            
-            con.end(function(err) {
-                console.log(finalresult)
-                console.log("Disconnected from MySQL server");
-            });
-            return(data);
-        }
-        // console.log(data)
-        return(-1);
-    });
-    return(finalresult);
+    let promise = new Promise((resolve, reject) => {
+        con.connect(function (err) {
+            let data;
+            if(err) {
+                console.log("Error Connecting");
+            } else {
+                console.log("Yeap, this is MySQL Server talking! At your Services!");
+                con.query(sql, function(ee, result, fields) {
+                    if(err) throw err;
+                    resolve(result)
+                });
+                
+                con.end(function(err) {
+                    console.log("Disconnected from MySQL server");
+                });
+                return(data);
+            }
+            // console.log(data)
+            return(-1);
+        })
+    }); // define the Promise with any async code
+  
+    let result = await promise; // define that some output will be returned when the Promise is resolved
+    return(result)
 }
 
-let data = myDBAccess()
-console.log("From outside: ")
-myDBAccess().then(console.log)
-module.exports = { data }
+// f().then((result) => {
+//     //    console.log(result)
+//         data = result
+        
+//     }
+// )
+module.exports = { f }

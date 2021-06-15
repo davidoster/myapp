@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var studentService = require('../services/dummyStudentService')
+var studentService = require('../services/studentService')
 
 
 /* GET home page. */
