@@ -8,8 +8,7 @@ var Student = require('../models/student').Student
 router.get('/', function(req, res, next) {
   studentService.getAllStudents().then((result) => {
         res.render('students', { title: 'Students', studentsArray: {data: result} })
-  }
-) 
+  }) 
 })
 
 /* GET a new student - has an HTML form */
@@ -22,8 +21,32 @@ router.get('/new', function(req, res, next) {
 /* GET a delete action with :id */
 // http://localhost:3000/students/delete/1
 router.get('/delete/:id', function(req, res, next) {
-  console.log(req.params.id)
+  studentService.deleteStudent(req.params.id).then((result) => {
+    if(result.affectedRows == 1) {
+      studentService.getAllStudents().then((result) => {
+        res.render('students', { title: 'Students', studentsArray: {data: result} })
+      })
+    } else {
+      res.render('newStudent')
+    }
+    console.log(result)
+  })
 })
+
+/* GET update student */
+// http://localhost:3000/students/update/:id
+router.get('/update/:id', function(req, res, next) {
+  // get from the studentService the row with :id <--- findStudentById(id)
+  // when we have this Student object
+  // render the page 'editStudent', aStudent
+})
+
+/* POST update student */
+// http://localhost:3000/students/update
+router.post('/update', function(req, res, next) {
+  
+})
+
 
 /* POST a student */
 router.post('/', function(req, res, next) {

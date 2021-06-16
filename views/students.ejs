@@ -14,7 +14,7 @@
       <% if(studentsArray != undefined)  { %>
         <p><%= //studentsArray.data[0].student_first + " - " + studentsArray.data[0].student_last %></p>
         <% for(let i = 0; i < studentsArray.data.length; i++) { %>
-          <li><%= studentsArray.data[i].student_first %> <%= studentsArray.data[i].student_last %> <%= studentsArray.data[i].hobby %> <a href='/delete/5'>Delete</a></li>
+          <li><%= studentsArray.data[i].student_first %> <%= studentsArray.data[i].student_last %> <%= studentsArray.data[i].hobby %> <a href='/students/update/<%= studentsArray.data[i].id %>'>Update</a> <a href='/students/delete/<%= studentsArray.data[i].id %>'>Delete</a></li>
         <% } %>
       <% } %>  
     </ul>
