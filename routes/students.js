@@ -19,6 +19,12 @@ router.get('/new', function(req, res, next) {
 })
 
 
+/* GET a delete action with :id */
+// http://localhost:3000/students/delete/1
+router.get('/delete/:id', function(req, res, next) {
+  console.log(req.params.id)
+})
+
 /* POST a student */
 router.post('/', function(req, res, next) {
   // console.log(req.body)

@@ -73,6 +73,10 @@ async function insertStudent(student) {
 
 }
 
+async function deleteStudent(id) {
+    
+}
+
 // insertStudent(student) student = new Student()
 
 module.exports = { getAllStudents, insertStudent }
