@@ -24,8 +24,15 @@ router.post('/', function(req, res, next) {
   // console.log(req.body)
   let aStudent = new Student(null,req.body.fname, req.body.lname, req.body.hobby)
   // INSERT INTO db this aStudent
-  console.log(aStudent.toString())
-  res.render('index', { title: 'Express', course: "CB13 JavaScript Part" })
+  studentService.insertStudent(aStudent).then((result) => {
+    if(result.affectedRows == 1) {
+
+    } else {
+      
+    }
+    console.log(result)
+    //res.render('students', { title: 'Students', studentsArray: {data: result} })
+  })
 })
 
 
