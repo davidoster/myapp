@@ -51,7 +51,10 @@ async function insertStudent(student) {
             } else {
                 console.log("Yeap, this is MySQL Server talking! At your Services!");
                 con.query(sql, function(ee, result, fields) {
-                    if(err) throw err;
+                    // console.log("Error inside con.query")
+                    // console.log(ee)
+                    // console.log("Error inside con.query")
+                    if(ee != undefined && ee.errno > 0) reject(ee) //throw err;
                     resolve(result)
                 });
                 
