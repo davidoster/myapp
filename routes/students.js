@@ -26,12 +26,14 @@ router.post('/', function(req, res, next) {
   // INSERT INTO db this aStudent
   studentService.insertStudent(aStudent).then((result) => {
     if(result.affectedRows == 1) {
-
+      studentService.getAllStudents().then((result) => {
+        res.render('students', { title: 'Students', studentsArray: {data: result} })
+      })
     } else {
-      
+      res.render('newStudent')
     }
     console.log(result)
-    //res.render('students', { title: 'Students', studentsArray: {data: result} })
+    
   })
 })
 
