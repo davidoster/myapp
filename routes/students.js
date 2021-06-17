@@ -52,6 +52,19 @@ router.get('/update/:id', function(req, res, next) {
 /* POST update student */
 // http://localhost:3000/students/update
 router.post('/update', function(req, res, next) {
+  // 1. call updateStudent(student)
+  let student = new Student(req.body.id, req.body.fname, req.body.lname, req.body.hobby)
+  studentService.updateStudent(student).then((result) => {
+    if(result.affectedRows == 1) {
+      studentService.getAllStudents().then((result) => {
+        res.render('students', { title: 'Students', studentsArray: {data: result} })
+      })
+    // } else {
+    //   res.render('newStudent')
+    }
+  })
+  // 2. render /students
+
 
 })
 
