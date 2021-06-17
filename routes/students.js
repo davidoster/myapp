@@ -37,6 +37,14 @@ router.get('/delete/:id', function(req, res, next) {
 // http://localhost:3000/students/update/:id
 router.get('/update/:id', function(req, res, next) {
   // get from the studentService the row with :id <--- findStudentById(id)
+  studentService.findStudentById(req.params.id).then((result) => {
+    if(result.id  == req.params.id) { // (result.id > 0)
+      console.log(result)
+      res.render('editStudent', { result })
+    }
+  })
+
+
   // when we have this Student object
   // render the page 'editStudent', aStudent
 })
@@ -44,7 +52,7 @@ router.get('/update/:id', function(req, res, next) {
 /* POST update student */
 // http://localhost:3000/students/update
 router.post('/update', function(req, res, next) {
-  
+
 })
 
 
