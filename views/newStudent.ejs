@@ -8,12 +8,17 @@
     <%- include('head_incs') %>
 </head>
 <body>
-    <h3>Insert new Student</h3>
+    <%- include('menus') %>
+    <h3>Insert New Student</h3>
     <form action="/students" method="post">
-        First Name:<input type="text" name="fname" id=""><br>
-        Last Name:<input type="text" name="lname" id=""><br>
-        Hobby:<input type="text" name="hobby" id=""><br>
-        <input type="submit" value="Add New Student">
+        <label for="fname" class="form-label">First Name</label>
+        <input type="text" name="fname" id="fname" class="form-control"><br>
+        <label for="lname" class="form-label">Last Name</label>
+        <input type="text" name="lname" id="lname" class="form-control"><br>
+        <label for="hobby" class="form-label">Hobby</label>
+        <input type="text" name="hobby" id="hobby" class="form-control"><br>
+        <input type="submit" value="Add New Student" class="btn btn-primary spacey-btn" class="form-control">
     </form>
+    <a href="/students" class="btn btn-info spacey-btn">Back to Students</a>
 </body>
 </html>

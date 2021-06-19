@@ -8,14 +8,18 @@
     <%- include('head_incs') %>
 </head>
 <body>
+    <%- include('menus') %>
     <h3>Edit a Student</h3>
     <form action="/students/update" method="post">
-        First Name:<input type="text" name="fname" id="" value='<%= result.student_first %>'><br>
-        Last Name:<input type="text" name="lname" id="" value='<%= result.student_last %>'><br>
-        Hobby:<input type="text" name="hobby" id="" value='<%= result.hobby %>' size=25 maxlength=25><br>
+        <label for="fname" class="form-label">First Name</label>
+        <input type="text" name="fname" id="fname" class="form-control" value='<%= result.student_first %>'><br>
+        <label for="lname" class="form-label">Last Name</label>
+        <input type="text" name="lname" id="lname" class="form-control" value='<%= result.student_last %>'><br>
+        <label for="hobby" class="form-label">Hobby</label>
+        <input type="text" name="hobby" id="hobby" class="form-control" value='<%= result.hobby %>' size=25 maxlength=25><br>
         <input type="text" name="id" id="" value='<%= result.id %>' hidden readonly>
-        <input type="submit" value="Update Student">
+        <input type="submit" value="Update Student" class="btn btn-primary spacey-btn" class="form-control">
     </form>
-    <a href="/students">Back to Students</a>
+    <a href="/students" class="btn btn-info spacey-btn">Back to Students</a>
 </body>
 </html>

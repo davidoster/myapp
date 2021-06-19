@@ -12,10 +12,11 @@
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
   </head>
   <body>
+    <%- include('menus') %>
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
     <p>List of Students%></p>
-    <button type="button" class="btn btn-primary" onclick="window.location='/students/new'">New Student</button>
+    <button type="button" class="btn btn-primary spacey-btn" onclick="window.location='/students/new'">New Student</button>
     <table id="students_table" class="display" style="width:100%">
       <thead>
         <tr>
