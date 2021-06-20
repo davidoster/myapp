@@ -10,3 +10,11 @@ a {
 .spacey-btn {
   margin: 0.2em;
 }
+
+#students_table > thead > tr > td {
+  font-weight: bold;
+}
+
+.btn-extend {
+  font-weight: 550 !important;
+}
